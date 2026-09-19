@@ -1,0 +1,179 @@
+/* Цвета сайта. Для тёмной темы телефона/компьютера — свои значения ниже */
+:root {
+  --background: #fff6ee;
+  --card: #ffffff;
+  --text: #1c1c1e;
+  --text-secondary: #5b5b60;
+  --accent: #e03597;
+  --accent-soft: #ffe2f1;
+  --border: rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #140c12;
+    --card: #221820;
+    --text: #f5f5f7;
+    --text-secondary: #b3adb3;
+    --accent: #ff7ac2;
+    --accent-soft: #3a1830;
+    --border: rgba(255, 255, 255, 0.1);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px 16px 48px;
+}
+
+/* Верхняя строка: название и переключатель языка */
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0 24px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.lang-switch {
+  display: flex;
+  gap: 4px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px;
+}
+
+.lang-switch button {
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.lang-switch button[aria-pressed="true"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* Главный блок с огоньками */
+.hero {
+  text-align: center;
+  padding: 8px 0 32px;
+}
+
+.hero img {
+  width: min(100%, 420px);
+  height: auto;
+}
+
+h1 {
+  font-size: clamp(30px, 8vw, 44px);
+  line-height: 1.15;
+  margin: 12px 0;
+}
+
+h2 {
+  font-size: 20px;
+  margin: 32px 0 8px;
+}
+
+.lead {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin: 0 auto;
+  max-width: 540px;
+}
+
+/* Карточки с возможностями */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.feature {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 18px;
+}
+
+.feature strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.feature p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+/* Текст политики */
+.document {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 8px 20px 20px;
+}
+
+.document p,
+.document li {
+  color: var(--text-secondary);
+}
+
+.updated {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+a {
+  color: var(--accent);
+}
+
+footer {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 40px;
+}
+
+/*
+  Три языка лежат на странице одновременно, у каждого блока — data-l="ru|en|es".
+  Прячем блоки всех языков, кроме выбранного (его пишет lang.js в <html data-lang>).
+  !important — чтобы правило сработало, даже если у элемента задан свой display
+  (например, у заголовков карточек display: block).
+*/
+html:not([data-lang="ru"]) [data-l="ru"],
+html:not([data-lang="en"]) [data-l="en"],
+html:not([data-lang="es"]) [data-l="es"] {
+  display: none !important;
+}
