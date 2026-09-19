@@ -1,24 +1,17 @@
-/* Цвета сайта. Для тёмной темы телефона/компьютера — свои значения ниже */
+/*
+  Цвета сайта — как у иконки приложения: тёмно-синяя ночь и тёплое оранжевое свечение.
+  Сайт всегда тёмный, в любой теме телефона и компьютера.
+*/
 :root {
-  --background: #fff6ee;
-  --card: #ffffff;
-  --text: #1c1c1e;
-  --text-secondary: #5b5b60;
-  --accent: #e03597;
-  --accent-soft: #ffe2f1;
-  --border: rgba(0, 0, 0, 0.08);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #140c12;
-    --card: #221820;
-    --text: #f5f5f7;
-    --text-secondary: #b3adb3;
-    --accent: #ff7ac2;
-    --accent-soft: #3a1830;
-    --border: rgba(255, 255, 255, 0.1);
-  }
+  color-scheme: dark;
+  --background: #14102a;
+  --card: #1f1a3b;
+  --text: #f5f3ff;
+  --text-secondary: #aba5c8;
+  --accent: #ff8a3d;
+  --accent-soft: rgba(255, 122, 46, 0.16);
+  --glow: rgba(255, 122, 46, 0.45);
+  --border: rgba(255, 255, 255, 0.08);
 }
 
 * {
@@ -86,6 +79,8 @@ body {
 .hero {
   text-align: center;
   padding: 8px 0 32px;
+  /* Тёплое свечение за огоньками, как на иконке */
+  background: radial-gradient(circle at 50% 28%, var(--glow) 0%, transparent 42%);
 }
 
 .hero img {
@@ -176,4 +171,12 @@ html:not([data-lang="ru"]) [data-l="ru"],
 html:not([data-lang="en"]) [data-l="en"],
 html:not([data-lang="es"]) [data-l="es"] {
   display: none !important;
+}
+
+/* Заголовок политики длинный («конфиденциальности») — на узком экране
+   делаем его меньше и разрешаем перенос слова, чтобы он не вылезал за край */
+.document h1 {
+  font-size: clamp(26px, 7vw, 40px);
+  overflow-wrap: break-word;
+  hyphens: auto;
 }

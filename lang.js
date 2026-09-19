@@ -33,6 +33,8 @@ function pickLanguage() {
 
 function setLanguage(language) {
   document.documentElement.dataset.lang = language;
+  // Язык страницы для браузера: нужен для переносов по слогам и для экранного диктора
+  document.documentElement.lang = language;
   document.documentElement.lang = language;
 
   // Подсвечиваем нажатую кнопку
